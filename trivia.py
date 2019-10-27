@@ -22,6 +22,10 @@ def get_choices(result):
 
     choices = [ correct_answer ]
     choices.extend(incorrect_answers)
+
+    for i, choice in enumerate(choices):
+        choices[i] = html.unescape(choice)
+
     random.shuffle(choices)
     return choices
 
