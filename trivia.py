@@ -41,17 +41,19 @@ def get_question():
 
 
 def say(channel):
+    channel_context = hexchat.find_context(channel=channel)
+
     question = get_question()
     query = question['question']
     choices = question['choices']
 
     question_command = 'msg {} <Trivia Bot>: {} Choices: {}'.format(channel, query, choices)
-    hexchat.command(question_command)
+    channel_context.command(question_command)
     time.sleep(20)
 
     answer = question['answer']
     answer_command = 'msg {} <Trivia Bot>: Answer: {}'.format(channel, answer)
-    hexchat.command(answer_command)
+    channel_context.command(answer_command)
 
 
 def print_callback(words, eol, userdata):
